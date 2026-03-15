@@ -267,9 +267,7 @@ body {
   font-size: 0.95rem;
 }
 
-.aurora-bg-2 {
-  /* This was already added in the first chunk, removing redundant local ones if they exist */
-}
+
 
 .hero-section {
   padding-top: calc(8rem + var(--nav-height));
@@ -336,6 +334,8 @@ body {
   cursor: pointer;
   transition: all 0.18s ease-out;
   white-space: nowrap;
+  text-decoration: none;
+  font-family: inherit;
 }
 
 .btn i {

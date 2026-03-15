@@ -85,7 +85,7 @@ const Hero = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="btn ghost-btn"
-              download
+              style={{ textDecoration: 'none' }}
             >
               Resume <FiDownload />
             </a>
