@@ -3,16 +3,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiDownload } from 'react-icons/fi';
 
 import { 
-  SiNodedotjs, SiExpress, SiMongodb, SiSpringboot, SiPython
+  SiNodedotjs, SiExpress, SiMongodb, SiSpringboot, SiPython, SiReact
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa6';
 
 const orbitTech = [
   { name: 'Java', icon: <FaJava />, color: '#ED8B00', angle: 0 },
-  { name: 'Python', icon: <SiPython />, color: '#3776AB', angle: 72 },
-  { name: 'Spring Boot', icon: <SiSpringboot />, color: '#6DB33F', angle: 144 },
-  { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248', angle: 216 },
-  { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933', angle: 288 },
+  { name: 'Python', icon: <SiPython />, color: '#3776AB', angle: 51 },
+  { name: 'React.js', icon: <SiReact />, color: '#61DAFB', angle: 103 },
+  { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933', angle: 154 },
+  { name: 'Express.js', icon: <SiExpress />, color: '#ffffff', angle: 206 },
+  { name: 'Spring Boot', icon: <SiSpringboot />, color: '#6DB33F', angle: 257 },
+  { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248', angle: 309 },
 ];
 
 const technologies = [
