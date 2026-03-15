@@ -7,7 +7,7 @@ const educationList = [
         degree: 'B.Tech - Computer Science and Engineering',
         institution: 'Puducherry Technological University',
         duration: '2021-2025',
-        score: 'CGPA: 7.85'
+        score: 'CGPA: 7.75'
     },
     {
         degree: 'HSC - Tamil Nadu State Board',
