@@ -8,13 +8,11 @@ import {
 import { FaJava } from 'react-icons/fa6';
 
 const orbitTech = [
-  { name: 'React', icon: <SiReact />, color: '#61DAFB', angle: 0 },
-  { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933', angle: 51 },
-  { name: 'Express', icon: <SiExpress />, color: '#ffffff', angle: 102 },
-  { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248', angle: 153 },
-  { name: 'Spring', icon: <SiSpringboot />, color: '#6DB33F', angle: 204 },
-  { name: 'Java', icon: <FaJava />, color: '#ED8B00', angle: 255 },
-  { name: 'Python', icon: <SiPython />, color: '#3776AB', angle: 306 },
+  { name: 'Java', icon: <FaJava />, color: '#ED8B00', angle: 0 },
+  { name: 'Python', icon: <SiPython />, color: '#3776AB', angle: 72 },
+  { name: 'Spring Boot', icon: <SiSpringboot />, color: '#6DB33F', angle: 144 },
+  { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248', angle: 216 },
+  { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933', angle: 288 },
 ];
 
 const technologies = [
@@ -134,53 +132,59 @@ const Hero = () => {
           <div className="orbit orbit-1" />
           <div className="orbit orbit-2" />
           <div className="orbit orbit-3" />
-          <div className="orbit orbit-3" />
           
-          {/* Floating tech badges around the orbit */}
-          {orbitTech.map((tech, index) => {
-            const radius = 160; // Adjusted radius for orbit
-            const x = Math.cos(tech.angle * (Math.PI / 180)) * radius;
-            const y = Math.sin(tech.angle * (Math.PI / 180)) * radius;
-            
-            return (
-              <motion.div
-                key={tech.name}
-                style={{
-                  position: 'absolute',
-                  left: `calc(50% + ${x}px)`,
-                  top: `calc(50% + ${y}px)`,
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 10
-                }}
-                animate={{
-                  y: [y, y - 10, y],
-                  x: [x, x + 5, x]
-                }}
-                transition={{
-                  duration: 3 + index,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <div 
-                  className="glass-card" 
-                  style={{ 
-                    padding: '0.4rem 0.8rem', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '0.4rem', 
-                    fontSize: '0.75rem',
-                    background: 'rgba(15, 23, 42, 0.8)',
-                    borderColor: 'var(--border-soft)',
-                    whiteSpace: 'nowrap'
+          {/* Rotating container for tech badges */}
+          <motion.div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 10,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          >
+            {orbitTech.map((tech) => {
+              const radius = 162; // Matches orbit-3 radius (140 + 22.4)
+              const x = Math.cos(tech.angle * (Math.PI / 180)) * radius;
+              const y = Math.sin(tech.angle * (Math.PI / 180)) * radius;
+              
+              return (
+                <motion.div
+                  key={tech.name}
+                  style={{
+                    position: 'absolute',
+                    left: `calc(50% + ${x}px)`,
+                    top: `calc(50% + ${y}px)`,
+                    transform: 'translate(-50%, -50%)',
                   }}
                 >
-                  <span style={{ color: tech.color, display: 'flex', fontSize: '1rem' }}>{tech.icon}</span>
-                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>{tech.name}</span>
-                </div>
-              </motion.div>
-            );
-          })}
+                  {/* Counter-rotate the badge so text remains upright */}
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                    className="glass-card" 
+                    style={{ 
+                      padding: '0.4rem 0.8rem', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '0.4rem', 
+                      fontSize: '0.75rem',
+                      background: 'rgba(15, 23, 42, 0.85)',
+                      borderColor: 'rgba(148, 163, 184, 0.4)',
+                      whiteSpace: 'nowrap',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                    }}
+                  >
+                    <span style={{ color: tech.color, display: 'flex', fontSize: '1rem' }}>{tech.icon}</span>
+                    <span style={{ fontWeight: 600, color: 'var(--text)' }}>{tech.name}</span>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </motion.div>
       </div>
     </section>
