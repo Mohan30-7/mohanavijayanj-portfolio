@@ -18,25 +18,11 @@ const projects = [
     demo: 'https://mohanavijayanj-ems-java-react.vercel.app/login'
   },
   {
-    title: 'Supermarket Sales Analysis',
-    description: 'Data analytics dashboard built during MSME internship to analyze sales trends and generate insights through interactive visualizations.',
-    tech: ['Python', 'Streamlit', 'Pandas', 'Plotly', 'Data Viz'],
-    github: 'https://github.com/Mohan30-7',
-    demo: 'https://mohanavijayanj-supermarket-sales-analysis.streamlit.app/'
-  },
-  {
     title: 'MV Spark Website',
     description: 'A modern, high-performance responsive website designed to showcase company services with smooth navigation and clean UI.',
     tech: ['React', 'HTML5', 'CSS3', 'JavaScript', 'Responsive'],
     github: 'https://github.com/Mohan30-7/MV-Spark-Welders',
     demo: 'https://mohanavijayanj-mv-spark-website.vercel.app/'
-  },
-  {
-    title: 'CodeAlpha Frontend Tasks',
-    description: 'Collection of interactive frontend applications including an Image Gallery, Calculator, and Music Player focusing on UI/UX.',
-    tech: ['HTML', 'CSS', 'JavaScript', 'DOM Manipulation'],
-    github: 'https://github.com/Mohan30-7',
-    demo: 'https://mohanavijayanj-codealpha-tasks.vercel.app/'
   }
 ];
 

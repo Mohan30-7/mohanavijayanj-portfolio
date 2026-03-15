@@ -6,7 +6,7 @@ import {
     FaPython, FaDatabase, FaGitAlt, FaGithub 
 } from 'react-icons/fa6';
 import { 
-    SiExpress, SiMongodb, SiSpringboot, SiPandas, SiPlotly 
+    SiExpress, SiMongodb, SiSpringboot, SiPandas, SiPlotly, SiStreamlit, SiVite
 } from 'react-icons/si';
 import { 
     IoLogoJavascript, IoLogoNodejs, IoSettingsSharp 
@@ -45,7 +45,7 @@ const skillGroups = [
         { name: 'Python', icon: <FaPython /> },
         { name: 'Pandas', icon: <SiPandas /> },
         { name: 'Plotly', icon: <SiPlotly /> },
-        { name: 'Streamlit', icon: null },
+        { name: 'Streamlit', icon: <SiStreamlit /> },
     ] 
   },
   { 
@@ -53,7 +53,7 @@ const skillGroups = [
     skills: [
         { name: 'Git', icon: <FaGitAlt /> },
         { name: 'GitHub', icon: <FaGithub /> },
-        { name: 'Vite', icon: null },
+        { name: 'Vite', icon: <SiVite /> },
     ] 
   }
 ];

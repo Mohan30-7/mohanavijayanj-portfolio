@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiDownload } from 'react-icons/fi';
 
 const technologies = [
@@ -13,6 +12,15 @@ const technologies = [
 ];
 
 const Hero = () => {
+  const [techIndex, setTechIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setTechIndex((prev) => (prev + 1) % technologies.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   const handleScroll = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -75,22 +83,15 @@ const Hero = () => {
 
           <div className="hero-tech-typing">
             <span className="tech-label">Core Tech Stack:</span>
-            <div className="typing-carousel" style={{ height: '2rem', marginTop: '0.5rem' }}>
-              {technologies.map((tech, index) => (
+            <div className="typing-carousel" style={{ height: '2rem', marginTop: '0.5rem', position: 'relative' }}>
+              <AnimatePresence mode="wait">
                 <motion.span 
-                  key={tech} 
+                  key={technologies[techIndex]}
                   className="typing-item"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ 
-                    opacity: [0, 1, 1, 0],
-                    y: [10, 0, 0, -10]
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    delay: index * 4,
-                    times: [0, 0.1, 0.9, 1]
-                  }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.6 }}
                   style={{ 
                     position: 'absolute', 
                     color: 'var(--accent)', 
@@ -98,9 +99,9 @@ const Hero = () => {
                     fontSize: '1.2rem'
                   }}
                 >
-                  {tech}
+                  {technologies[techIndex]}
                 </motion.span>
-              ))}
+              </AnimatePresence>
             </div>
           </div>
         </motion.div>

@@ -40,13 +40,13 @@ const About = () => {
               Passionate Developer & Problem Solver
             </h3>
             <p className="card-body" style={{ fontSize: '1.1rem', lineHeight: '1.7', color: 'var(--muted)' }}>
-              I am a **Full Stack Developer** specializing in the **MERN Stack** and **Spring Boot**. With a strong foundation in Computer Science, I focus on building scalable web applications with secure authentication, efficient REST APIs, and highly interactive user interfaces.
+              I am a Full Stack Developer specializing in the MERN Stack and Spring Boot. With a strong foundation in Computer Science, I focus on building scalable web applications with secure authentication, efficient REST APIs, and highly interactive user interfaces.
             </p>
             <p className="card-body" style={{ fontSize: '1.1rem', lineHeight: '1.7', color: 'var(--muted)' }}>
-              I graduated with a **B.Tech in Computer Science and Engineering in 2025**. During my academic journey, I've developed a keen interest in data analytics and visualization, utilizing Python to derive meaningful insights from complex datasets.
+              I graduated with a B.Tech in Computer Science and Engineering in 2025. During my academic journey, I've developed a keen interest in data analytics and visualization, utilizing Python to derive meaningful insights from complex datasets.
             </p>
             <p className="card-body" style={{ fontSize: '1.1rem', lineHeight: '1.7', color: 'var(--muted)' }}>
-                Recent experience includes a **6-week internship at MSME**, where I developed a Sales Analysis Dashboard for a Supermarket using Python and Streamlit, showcasing my ability to bridge the gap between backend logic and data-driven decision making.
+                Recent experience includes a 6-week internship at MSME, where I developed a Sales Analysis Dashboard for a Supermarket using Python and Streamlit, showcasing my ability to bridge the gap between backend logic and data-driven decision making.
             </p>
             
             <div style={{ marginTop: '2rem', display: 'flex', gap: '2rem' }}>
