@@ -86,9 +86,9 @@ const Hero = () => {
                     y: [10, 0, 0, -10]
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 4,
                     repeat: Infinity,
-                    delay: index * 3,
+                    delay: index * 4,
                     times: [0, 0.1, 0.9, 1]
                   }}
                   style={{ 
