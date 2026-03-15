@@ -62,10 +62,10 @@ const BackgroundParticles = () => {
                         direction: "none",
                         enable: true,
                         outModes: {
-                            default: "bounce",
+                            default: "out",
                         },
-                        random: false,
-                        speed: 1,
+                        random: true,
+                        speed: 2,
                         straight: false,
                     },
                     number: {
@@ -73,16 +73,23 @@ const BackgroundParticles = () => {
                             enable: true,
                             area: 800,
                         },
-                        value: 80,
+                        value: 100,
                     },
                     opacity: {
-                        value: 0.2,
+                        value: 0.3,
+                        random: true,
+                        animation: {
+                            enable: true,
+                            speed: 1,
+                            minimumValue: 0.1
+                        }
                     },
                     shape: {
                         type: "circle",
                     },
                     size: {
-                        value: { min: 1, max: 3 },
+                        value: { min: 1, max: 4 },
+                        random: true
                     },
                 },
                 detectRetina: true,

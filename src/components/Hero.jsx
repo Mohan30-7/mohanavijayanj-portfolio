@@ -2,6 +2,21 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiDownload } from 'react-icons/fi';
 
+import { 
+  SiReact, SiNodedotjs, SiExpress, SiMongodb, SiSpringboot, SiSpring, SiPython
+} from 'react-icons/si';
+import { FaJava } from 'react-icons/fa6';
+
+const orbitTech = [
+  { name: 'React', icon: <SiReact />, color: '#61DAFB', angle: 0 },
+  { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933', angle: 51 },
+  { name: 'Express', icon: <SiExpress />, color: '#ffffff', angle: 102 },
+  { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248', angle: 153 },
+  { name: 'Spring', icon: <SiSpringboot />, color: '#6DB33F', angle: 204 },
+  { name: 'Java', icon: <FaJava />, color: '#ED8B00', angle: 255 },
+  { name: 'Python', icon: <SiPython />, color: '#3776AB', angle: 306 },
+];
+
 const technologies = [
   'MERN Stack',
   'React.js',
@@ -119,42 +134,53 @@ const Hero = () => {
           <div className="orbit orbit-1" />
           <div className="orbit orbit-2" />
           <div className="orbit orbit-3" />
+          <div className="orbit orbit-3" />
           
-          {/* Decorative floating elements */}
-          <motion.div 
-            style={{ 
-                position: 'absolute', 
-                top: '10%', 
-                right: '10%', 
-                padding: '0.5rem 1rem', 
-                background: 'var(--bg-elevated)', 
-                borderRadius: '12px', 
-                border: '1px solid var(--border-soft)',
-                fontSize: '0.8rem',
-                zIndex: 5
-            }}
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            🚀 React Expert
-          </motion.div>
-          <motion.div 
-            style={{ 
-                position: 'absolute', 
-                bottom: '15%', 
-                left: '-5%', 
-                padding: '0.5rem 1rem', 
-                background: 'var(--bg-elevated)', 
-                borderRadius: '12px', 
-                border: '1px solid var(--border-soft)',
-                fontSize: '0.8rem',
-                zIndex: 5
-            }}
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          >
-            ⚡ Node.js Master
-          </motion.div>
+          {/* Floating tech badges around the orbit */}
+          {orbitTech.map((tech, index) => {
+            const radius = 160; // Adjusted radius for orbit
+            const x = Math.cos(tech.angle * (Math.PI / 180)) * radius;
+            const y = Math.sin(tech.angle * (Math.PI / 180)) * radius;
+            
+            return (
+              <motion.div
+                key={tech.name}
+                style={{
+                  position: 'absolute',
+                  left: `calc(50% + ${x}px)`,
+                  top: `calc(50% + ${y}px)`,
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 10
+                }}
+                animate={{
+                  y: [y, y - 10, y],
+                  x: [x, x + 5, x]
+                }}
+                transition={{
+                  duration: 3 + index,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <div 
+                  className="glass-card" 
+                  style={{ 
+                    padding: '0.4rem 0.8rem', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '0.4rem', 
+                    fontSize: '0.75rem',
+                    background: 'rgba(15, 23, 42, 0.8)',
+                    borderColor: 'var(--border-soft)',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  <span style={{ color: tech.color, display: 'flex', fontSize: '1rem' }}>{tech.icon}</span>
+                  <span style={{ fontWeight: 600, color: 'var(--text)' }}>{tech.name}</span>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
