@@ -1,43 +1,48 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+// Distributed imports across different sub-packages to improve build stability in Vite 6
 import { 
-    SiReact, SiNodedotjs, SiExpress, SiMongodb, 
-    SiSpringboot, SiPython, SiPandas, SiJavascript, 
-    SiHtml5, SiCss3, SiMysql, SiGit, SiGithub,
-    SiTypescript, SiBootstrap, SiTailwindcss, SiPlotly
+    FaReact, FaNodeJs, FaHtml5, FaCss3, FaBootstrap, 
+    FaPython, FaDatabase, FaGitAlt, FaGithub 
+} from 'react-icons/fa6';
+import { 
+    SiExpress, SiMongodb, SiSpringboot, SiPandas, SiPlotly 
 } from 'react-icons/si';
+import { 
+    IoLogoJavascript, IoLogoNodejs, IoSettingsSharp 
+} from 'react-icons/io5';
 
 const skillGroups = [
   { 
     category: 'Frontend', 
     skills: [
-        { name: 'React.js', icon: <SiReact /> },
-        { name: 'JavaScript', icon: <SiJavascript /> },
-        { name: 'HTML5', icon: <SiHtml5 /> },
-        { name: 'CSS3', icon: <SiCss3 /> },
-        { name: 'Bootstrap', icon: <SiBootstrap /> },
+        { name: 'React.js', icon: <FaReact /> },
+        { name: 'JavaScript', icon: <IoLogoJavascript /> },
+        { name: 'HTML5', icon: <FaHtml5 /> },
+        { name: 'CSS3', icon: <FaCss3 /> },
+        { name: 'Bootstrap', icon: <FaBootstrap /> },
     ] 
   },
   { 
     category: 'Backend', 
     skills: [
-        { name: 'Node.js', icon: <SiNodedotjs /> },
+        { name: 'Node.js', icon: <FaNodeJs /> },
         { name: 'Express.js', icon: <SiExpress /> },
         { name: 'Spring Boot', icon: <SiSpringboot /> },
-        { name: 'REST APIs', icon: null },
+        { name: 'REST APIs', icon: <IoSettingsSharp /> },
     ] 
   },
   { 
     category: 'Database', 
     skills: [
         { name: 'MongoDB', icon: <SiMongodb /> },
-        { name: 'MySQL', icon: <SiMysql /> },
+        { name: 'MySQL', icon: <FaDatabase /> },
     ] 
   },
   { 
     category: 'Data Analytics', 
     skills: [
-        { name: 'Python', icon: <SiPython /> },
+        { name: 'Python', icon: <FaPython /> },
         { name: 'Pandas', icon: <SiPandas /> },
         { name: 'Plotly', icon: <SiPlotly /> },
         { name: 'Streamlit', icon: null },
@@ -46,8 +51,8 @@ const skillGroups = [
   { 
     category: 'Tools', 
     skills: [
-        { name: 'Git', icon: <SiGit /> },
-        { name: 'GitHub', icon: <SiGithub /> },
+        { name: 'Git', icon: <FaGitAlt /> },
+        { name: 'GitHub', icon: <FaGithub /> },
         { name: 'Vite', icon: null },
     ] 
   }

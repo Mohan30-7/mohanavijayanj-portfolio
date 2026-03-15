@@ -1,17 +1,15 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { BsEnvelope, BsTelephone, BsLinkedin, BsSend } from 'react-icons/bs';
 import emailjs from '@emailjs/browser';
-import { FiMail, FiPhone, FiLinkedin, FiSend } from 'react-icons/fi';
 
 const Contact = () => {
-  const formRef = useRef(null);
-  const [status, setStatus] = useState({ type: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef();
+  const [status, setStatus] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ type: '', message: '' });
-    setIsSubmitting(true);
+    setStatus('sending');
 
     try {
       await emailjs.sendForm(
@@ -20,21 +18,11 @@ const Contact = () => {
         formRef.current,
         'e9sfouCmhBvJtjzpa'
       );
-
-      setStatus({
-        type: 'success',
-        message: 'Your message has been sent successfully!'
-      });
-      formRef.current?.reset();
+      setStatus('success');
+      formRef.current.reset();
     } catch (error) {
-      console.error('EmailJS error:', error);
-      setStatus({
-        type: 'error',
-        message:
-          'Something went wrong. Please try again later.'
-      });
-    } finally {
-      setIsSubmitting(false);
+      console.error(error);
+      setStatus('error');
     }
   };
 
@@ -50,118 +38,84 @@ const Contact = () => {
           >
             Get In <span className="accent">Touch</span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            style={{ color: 'var(--muted)', marginTop: '0.5rem' }}
+          >
+            Have a project in mind? Let's talk!
+          </motion.p>
         </div>
 
-        <div className="contact-grid">
+        <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '2rem' }}>
           <motion.div
-            className="glass-card contact-card"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            style={{ background: 'var(--bg-elevated)', padding: '2rem' }}
+            className="contact-info"
           >
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--text)' }}>Contact Information</h3>
-            <p className="card-body" style={{ fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div className="glass-card" style={{ padding: '1.5rem', marginBottom: '1.5rem', background: 'var(--bg-elevated)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--accent-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', fontSize: '1.2rem' }}>
-                  <FiPhone />
+                <div style={{ width: '3rem', height: '3rem', borderRadius: '12px', background: 'var(--accent-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', fontSize: '1.5rem' }}>
+                  <BsEnvelope />
                 </div>
                 <div>
-                   <p style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.1rem' }}>Phone</p>
-                   <span style={{ color: 'var(--text)', fontWeight: 600 }}>+91-9361207221</span>
+                  <h4 style={{ margin: 0, fontSize: '0.9rem', color: 'var(--muted)' }}>Email</h4>
+                  <p style={{ margin: 0, fontWeight: 600 }}>mohanavijayanj@gmail.com</p>
                 </div>
               </div>
+            </div>
 
+            <div className="glass-card" style={{ padding: '1.5rem', marginBottom: '1.5rem', background: 'var(--bg-elevated)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--accent-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', fontSize: '1.2rem' }}>
-                  <FiMail />
+                <div style={{ width: '3rem', height: '3rem', borderRadius: '12px', background: 'var(--accent-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', fontSize: '1.5rem' }}>
+                  <BsTelephone />
                 </div>
                 <div>
-                   <p style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.1rem' }}>Email</p>
-                   <a href="mailto:mohanavijayanj@gmail.com" style={{ color: 'var(--text)', fontWeight: 600, textDecoration: 'none' }}>mohanavijayanj@gmail.com</a>
+                  <h4 style={{ margin: 0, fontSize: '0.9rem', color: 'var(--muted)' }}>Phone</h4>
+                  <p style={{ margin: 0, fontWeight: 600 }}>+91 9361207221</p>
                 </div>
               </div>
+            </div>
 
+            <div className="glass-card" style={{ padding: '1.5rem', background: 'var(--bg-elevated)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--accent-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', fontSize: '1.2rem' }}>
-                  <FiLinkedin />
+                <div style={{ width: '3rem', height: '3rem', borderRadius: '12px', background: 'var(--accent-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', fontSize: '1.5rem' }}>
+                  <BsLinkedin />
                 </div>
                 <div>
-                   <p style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.1rem' }}>LinkedIn</p>
-                   <a href="https://linkedin.com/in/mohanavijayan-j" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text)', fontWeight: 600, textDecoration: 'none' }}>mohanavijayan-j</a>
+                  <h4 style={{ margin: 0, fontSize: '0.9rem', color: 'var(--muted)' }}>LinkedIn</h4>
+                  <a href="https://linkedin.com/in/mohanavijayanj" target="_blank" rel="noreferrer" style={{ fontWeight: 600, color: 'var(--text)', textDecoration: 'none' }}>mohanavijayanj</a>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          <motion.form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className="glass-card contact-form"
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ background: 'var(--bg-elevated)', padding: '2rem' }}
+            className="contact-form-wrapper"
           >
-            <div className="form-group">
-              <label htmlFor="name">Full Name</label>
-              <input
-                id="name"
-                name="user_name"
-                type="text"
-                placeholder="John Doe"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email Address</label>
-              <input
-                id="email"
-                name="user_email"
-                type="email"
-                placeholder="john@example.com"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Tell me about your project..."
-                rows={5}
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              className="btn primary-btn full-width"
-              disabled={isSubmitting}
-              style={{ padding: '1rem', marginTop: '1rem' }}
-            >
-              {isSubmitting ? 'Sending...' : (
-                  <>
-                    Send Message <FiSend style={{ marginLeft: '0.5rem' }} />
-                  </>
-              )}
-            </button>
-            {status.message && (
-              <p
-                className={`form-status ${status.type === 'success' ? 'success' : 'error'
-                  }`}
-                style={{ marginTop: '1rem', textAlign: 'center' }}
-              >
-                {status.message}
-              </p>
-            )}
-          </motion.form>
+            <form ref={formRef} onSubmit={handleSubmit} className="glass-card" style={{ padding: '2rem', background: 'var(--bg-elevated)' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <input type="text" name="user_name" placeholder="Your Name" required style={{ width: '100%', padding: '0.8rem 1rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-soft)', borderRadius: '8px', color: 'var(--text)' }} />
+              </div>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <input type="email" name="user_email" placeholder="Your Email" required style={{ width: '100%', padding: '0.8rem 1rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-soft)', borderRadius: '8px', color: 'var(--text)' }} />
+              </div>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <textarea name="message" placeholder="Your Message" required rows="5" style={{ width: '100%', padding: '0.8rem 1rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-soft)', borderRadius: '8px', color: 'var(--text)', resize: 'none' }}></textarea>
+              </div>
+              <button type="submit" disabled={status === 'sending'} className="btn primary-btn" style={{ width: '100%', justifyContent: 'center', gap: '0.75rem' }}>
+                {status === 'sending' ? 'Sending...' : <>Send Message <BsSend /></>}
+              </button>
+              {status === 'success' && <p style={{ color: '#10b981', marginTop: '1rem', textAlign: 'center' }}>Message sent successfully!</p>}
+              {status === 'error' && <p style={{ color: '#ef4444', marginTop: '1rem', textAlign: 'center' }}>Failed to send message. Please try again.</p>}
+            </form>
+          </motion.div>
         </div>
       </div>
     </section>

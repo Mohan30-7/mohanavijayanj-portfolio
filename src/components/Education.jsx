@@ -1,24 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiGraduationCap, FiCalendar, FiCheckCircle } from 'react-icons/fi';
+import { BsMortarboard, BsCalendar3, BsCheckCircle } from 'react-icons/bs';
 
 const educationList = [
     {
-        degree: 'B.Tech – Computer Science and Engineering',
+        degree: 'B.Tech - Computer Science and Engineering',
         institution: 'Puducherry Technological University',
-        duration: '2021–2025',
+        duration: '2021-2025',
         score: 'CGPA: 7.85'
     },
     {
-        degree: 'HSC – Tamil Nadu State Board',
+        degree: 'HSC - Tamil Nadu State Board',
         institution: 'Petit Seminaire Higher Secondary School',
-        duration: '2020–2021',
+        duration: '2020-2021',
         score: '87.8%'
     },
     {
-        degree: 'SSLC – Tamil Nadu State Board',
+        degree: 'SSLC - Tamil Nadu State Board',
         institution: 'Petit Seminaire Higher Secondary School',
-        duration: '2018–2019',
+        duration: '2018-2019',
         score: '86.4%'
     }
 ];
@@ -41,7 +41,7 @@ const Education = () => {
                 <div className="education-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
                     {educationList.map((edu, index) => (
                         <motion.div
-                            key={edu.degree}
+                            key={index}
                             className="glass-card"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ const Education = () => {
                             style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem', background: 'var(--bg-elevated)' }}
                         >
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', color: 'var(--accent)', fontSize: '1.2rem' }}>
-                                <FiGraduationCap />
+                                <BsMortarboard />
                                 <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text)', margin: 0, lineHeight: 1.4 }}>{edu.degree}</h3>
                             </div>
                             
@@ -58,10 +58,10 @@ const Education = () => {
 
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1rem', borderTop: '1px solid var(--border-soft)' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--muted)', fontSize: '0.85rem' }}>
-                                    <FiCalendar /> <span>{edu.duration}</span>
+                                    <BsCalendar3 /> <span>{edu.duration}</span>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent)', fontWeight: 700, fontSize: '0.9rem' }}>
-                                    <FiCheckCircle /> <span>{edu.score}</span>
+                                    <BsCheckCircle /> <span>{edu.score}</span>
                                 </div>
                             </div>
                         </motion.div>
