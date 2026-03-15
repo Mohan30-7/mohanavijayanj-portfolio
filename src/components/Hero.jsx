@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiDownload } from 'react-icons/fi';
+import Particles from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 import { 
-  SiReact, SiNodedotjs, SiExpress, SiMongodb, SiSpringboot, SiSpring, SiPython
+  SiNodedotjs, SiExpress, SiMongodb, SiSpringboot, SiPython
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa6';
 
@@ -28,6 +30,10 @@ const technologies = [
 const Hero = () => {
   const [techIndex, setTechIndex] = React.useState(0);
 
+  const particlesInit = useCallback(async (engine) => {
+    await loadSlim(engine);
+  }, []);
+
   React.useEffect(() => {
     const timer = setInterval(() => {
       setTechIndex((prev) => (prev + 1) % technologies.length);
@@ -44,12 +50,60 @@ const Hero = () => {
 
   return (
     <section id="home" className="section hero-section">
+      {/* Layer 1: Aurora Background */}
+      <div className="aurora-container">
+        <div className="aurora-bg"></div>
+        <div className="aurora-bg-2"></div>
+      </div>
+
+      {/* Layer 2: Subtle tsparticles */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
+        <Particles
+          id="hero-particles"
+          init={particlesInit}
+          options={{
+            fullScreen: { enable: false },
+            fpsLimit: 120,
+            particles: {
+              color: { value: "#ffffff" },
+              move: {
+                enable: true,
+                speed: 0.5,
+                direction: "none",
+                random: true,
+                straight: false,
+                outModes: { default: "out" },
+              },
+              number: {
+                density: { enable: true, area: 800 },
+                value: 40,
+              },
+              opacity: {
+                value: 0.2,
+                animation: {
+                    enable: true,
+                    speed: 0.5,
+                    minimumValue: 0.1
+                }
+              },
+              shape: { type: "circle" },
+              size: {
+                value: { min: 1, max: 2 },
+              },
+            },
+            detectRetina: true,
+          }}
+          className="hero-particles-layer"
+        />
+      </div>
+
       <div className="section-inner hero-inner">
         <motion.div
           className="hero-content"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          style={{ position: 'relative', zIndex: 10 }}
         >
           <motion.span 
             className="hero-eyebrow"
@@ -125,6 +179,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+          style={{ position: 'relative', zIndex: 20 }}
         >
           <div className="hero-avatar">
             <span className="avatar-initials">MJ</span>
@@ -147,7 +202,7 @@ const Hero = () => {
             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
           >
             {orbitTech.map((tech) => {
-              const radius = 162; // Matches orbit-3 radius (140 + 22.4)
+              const radius = 162; // Matches orbit-3 radius
               const x = Math.cos(tech.angle * (Math.PI / 180)) * radius;
               const y = Math.sin(tech.angle * (Math.PI / 180)) * radius;
               
@@ -161,7 +216,6 @@ const Hero = () => {
                     transform: 'translate(-50%, -50%)',
                   }}
                 >
-                  {/* Counter-rotate the badge so text remains upright */}
                   <motion.div
                     animate={{ rotate: -360 }}
                     transition={{ duration: 40, repeat: Infinity, ease: "linear" }}

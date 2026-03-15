@@ -201,9 +201,62 @@ body {
 
 .hero-section {
   padding-top: calc(4.5rem + var(--nav-height));
+  position: relative;
+  overflow: hidden;
+  background-color: #020617; /* Darkest base */
 }
 
+/* Layer 1: Aurora Background */
+.aurora-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #020617;
+}
+
+.aurora-bg {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(37, 99, 235, 0.15) 0%, 
+    rgba(124, 58, 237, 0.1) 25%, 
+    rgba(30, 41, 59, 0.05) 50%, 
+    rgba(15, 23, 42, 0) 100%
+  );
+  filter: blur(100px);
+  animation: aurora-mesh 20s ease-in-out infinite alternate;
+}
+
+.aurora-bg-2 {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  top: -20%;
+  right: -20%;
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(124, 58, 237, 0.12) 0%, 
+    rgba(37, 99, 235, 0.08) 30%, 
+    rgba(15, 23, 42, 0) 70%
+  );
+  filter: blur(80px);
+  animation: aurora-mesh 15s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes aurora-mesh {
+  0% { transform: rotate(0deg) scale(1) translate(0, 0); }
+  50% { transform: rotate(5deg) scale(1.1) translate(2%, 2%); }
+  100% { transform: rotate(-5deg) scale(1) translate(-2%, -2%); }
+}
+
+/* Layer 2: tsparticles will be placed here via z-index in Hero.jsx */
+
 .hero-inner {
+  position: relative;
+  z-index: 2; /* Content Layer */
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
   gap: 3.5rem;
