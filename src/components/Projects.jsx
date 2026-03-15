@@ -1,99 +1,144 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
 const projects = [
   {
-    title: 'Online Bus Reservation System',
-    description: 'Full-stack MERN course project for booking bus tickets.',
-    bullets: [
-      'Responsive and user-friendly bus reservation interface using HTML5, CSS3, and Bootstrap.',
-      'Interactive features: seat selection, form validation, and booking flow using JavaScript (ES6+).',
-      'Modular UI components built with React.js for better organization and reusability.',
-      'RESTful backend with Node.js and Express.js.',
-      'MongoDB integration for bookings and user data with focus on clean UI and smooth UX.'
-    ],
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'React.js', 'Node.js', 'Express.js', 'MongoDB'],
+    title: 'MERN Bus Reservation System',
+    description: 'A full-stack application for searching buses, booking seats, and management. Features a secure admin dashboard and responsive UI.',
+    tech: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JWT'],
     github: 'https://github.com/Mohan30-7',
-    demo: '#'
+    demo: 'https://mohanavijayanj-mern-bus-reservation-system.vercel.app/'
   },
   {
-    title: 'Blood Bank Management System',
-    description: 'Academic database project to manage donors, recipients, and blood inventory.',
-    bullets: [
-      'Designed relational schema for donors, recipients, and inventory.',
-      'Implemented CRUD operations and basic SQL queries.',
-      'Implemented blood group matching using simple SQL conditions.',
-      'Ensured data consistency using primary keys and constraints.'
-    ],
-    tech: ['MySQL', 'SQL', 'Database Design'],
+    title: 'Employee Management System',
+    description: 'Full-stack EMS where admins can manage employee records. Built with robust backend architecture and RESTful APIs.',
+    tech: ['Spring Boot', 'React.js', 'MySQL', 'REST API', 'Hibernate'],
     github: 'https://github.com/Mohan30-7',
-    demo: null
+    demo: 'https://mohanavijayanj-ems-java-react.vercel.app/login'
+  },
+  {
+    title: 'Supermarket Sales Analysis',
+    description: 'Data analytics dashboard built during MSME internship to analyze sales trends and generate insights through interactive visualizations.',
+    tech: ['Python', 'Streamlit', 'Pandas', 'Plotly', 'Data Viz'],
+    github: 'https://github.com/Mohan30-7',
+    demo: 'https://mohanavijayanj-supermarket-sales-analysis.streamlit.app/'
+  },
+  {
+    title: 'MV Spark Website',
+    description: 'A modern, high-performance responsive website designed to showcase company services with smooth navigation and clean UI.',
+    tech: ['React', 'HTML5', 'CSS3', 'JavaScript', 'Responsive'],
+    github: 'https://github.com/Mohan30-7/MV-Spark-Welders',
+    demo: 'https://mohanavijayanj-mv-spark-website.vercel.app/'
+  },
+  {
+    title: 'CodeAlpha Frontend Tasks',
+    description: 'Collection of interactive frontend applications including an Image Gallery, Calculator, and Music Player focusing on UI/UX.',
+    tech: ['HTML', 'CSS', 'JavaScript', 'DOM Manipulation'],
+    github: 'https://github.com/Mohan30-7',
+    demo: 'https://mohanavijayanj-codealpha-tasks.vercel.app/'
   }
 ];
 
-const projectVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i) => ({
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
     opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.15 }
-  })
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
 };
 
 const Projects = () => {
   return (
-    <section id="projects" className="section" data-aos="fade-up">
+    <section id="projects" className="section">
       <div className="section-inner">
-        <div className="section-header">
-          <h2>Featured Projects</h2>
-          <p>Selected work and case studies.</p>
+        <div className="section-header" style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text)', marginBottom: '1rem', textTransform: 'none' }}
+          >
+            Featured <span className="accent">Projects</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            style={{ color: 'var(--muted)', fontSize: '1.1rem' }}
+          >
+            A showcase of my recent work in web development and data analytics.
+          </motion.p>
         </div>
-        <div className="projects-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
+
+        <motion.div 
+          className="projects-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {projects.map((project, index) => (
             <motion.article
-              key={project.title}
-              className="glass-card project-card"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={index}
-              variants={projectVariants}
-              style={{ padding: '2rem' }}
+              key={index}
+              className="project-card"
+              variants={itemVariants}
             >
-              <div>
-                <h3 className="card-title" style={{ fontSize: '1.25rem', color: 'var(--accent-strong)', marginBottom: '0.5rem' }}>{project.title}</h3>
-                <p className="card-body" style={{ color: 'var(--text)', marginBottom: '1rem', fontWeight: 500 }}>{project.description}</p>
-                <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', color: 'var(--muted)', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  {project.bullets.map((bullet, i) => (
-                    <li key={i}>{bullet}</li>
-                  ))}
-                </ul>
+              <div className="project-image-wrapper">
+                <div className="project-image-placeholder">
+                  <span>Project Thumbnail Coming Soon</span>
+                </div>
+              </div>
+              
+              <div className="project-content">
+                <h3>{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+                
                 <div className="project-tech">
                   {project.tech.map((t) => (
-                    <span key={t} className="chip chip-soft">
+                    <span key={t} className="tech-badge">
                       {t}
                     </span>
                   ))}
                 </div>
-              </div>
-              <div className="card-footer">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn ghost-btn small-btn"
-                >
-                  <i className="fa-brands fa-github" />
-                  <span>View on GitHub</span>
-                </a>
+
+                <div className="card-footer">
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn primary-btn small-btn full-width"
+                  >
+                    <FiExternalLink /> Live Demo
+                  </a>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn ghost-btn small-btn full-width"
+                  >
+                    <FiGithub /> GitHub
+                  </a>
+                </div>
               </div>
             </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
 export default Projects;
-

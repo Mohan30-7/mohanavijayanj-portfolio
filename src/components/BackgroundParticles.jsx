@@ -1,26 +1,94 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import Particles from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const BackgroundParticles = () => {
-  const particles = Array.from({ length: 40 });
+    const particlesInit = useCallback(async (engine) => {
+        await loadSlim(engine);
+    }, []);
 
-  return (
-    <div className="background-particles" aria-hidden="true">
-      {particles.map((_, index) => (
-        <span
-          key={index}
-          className="particle"
-          style={{
-            '--x': `${Math.random() * 100}%`,
-            '--y': `${Math.random() * 100}%`,
-            '--delay': `${Math.random() * 10}s`,
-            '--duration': `${10 + Math.random() * 20}s`,
-            '--size': `${2 + Math.random() * 4}px`
-          }}
+    const particlesLoaded = useCallback(async (container) => {
+        // console.log(container);
+    }, []);
+
+    return (
+        <Particles
+            id="tsparticles"
+            init={particlesInit}
+            loaded={particlesLoaded}
+            options={{
+                background: {
+                    color: {
+                        value: "transparent",
+                    },
+                },
+                fpsLimit: 120,
+                interactivity: {
+                    events: {
+                        onClick: {
+                            enable: false,
+                            mode: "push",
+                        },
+                        onHover: {
+                            enable: true,
+                            mode: "grab",
+                        },
+                        resize: true,
+                    },
+                    modes: {
+                        push: {
+                            quantity: 4,
+                        },
+                        grab: {
+                            distance: 200,
+                            links: {
+                                opacity: 0.2
+                            }
+                        },
+                    },
+                },
+                particles: {
+                    color: {
+                        value: "#22d3ee",
+                    },
+                    links: {
+                        color: "#22d3ee",
+                        distance: 150,
+                        enable: true,
+                        opacity: 0.1,
+                        width: 1,
+                    },
+                    move: {
+                        direction: "none",
+                        enable: true,
+                        outModes: {
+                            default: "bounce",
+                        },
+                        random: false,
+                        speed: 1,
+                        straight: false,
+                    },
+                    number: {
+                        density: {
+                            enable: true,
+                            area: 800,
+                        },
+                        value: 80,
+                    },
+                    opacity: {
+                        value: 0.2,
+                    },
+                    shape: {
+                        type: "circle",
+                    },
+                    size: {
+                        value: { min: 1, max: 3 },
+                    },
+                },
+                detectRetina: true,
+            }}
         />
-      ))}
-    </div>
-  );
+    );
 };
 
 export default BackgroundParticles;
-

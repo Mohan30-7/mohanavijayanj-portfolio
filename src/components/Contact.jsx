@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import { FiMail, FiPhone, FiLinkedin, FiSend } from 'react-icons/fi';
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -26,12 +27,11 @@ const Contact = () => {
       });
       formRef.current?.reset();
     } catch (error) {
-      // Surface error details in the browser console for debugging
       console.error('EmailJS error:', error);
       setStatus({
         type: 'error',
         message:
-          'Something went wrong while sending your message. Please try again later.'
+          'Something went wrong. Please try again later.'
       });
     } finally {
       setIsSubmitting(false);
@@ -39,11 +39,17 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section" data-aos="fade-up">
+    <section id="contact" className="section">
       <div className="section-inner">
-        <div className="section-header">
-          <h2>Let&apos;s Connect</h2>
-          <p>Get in touch.</p>
+        <div className="section-header" style={{ marginBottom: '3rem' }}>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text)', textTransform: 'none' }}
+          >
+            Get In <span className="accent">Touch</span>
+          </motion.h2>
         </div>
 
         <div className="contact-grid">
@@ -51,37 +57,45 @@ const Contact = () => {
             className="glass-card contact-card"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            style={{ background: 'var(--bg-elevated)', padding: '2rem' }}
           >
-            <h3 className="card-title" style={{ color: 'var(--accent-strong)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Send a Message</h3>
-            <p className="card-body" style={{ fontSize: '1.05rem', lineHeight: 1.7 }}>
-              Have an opportunity, collaboration, or question? I&apos;d love to hear from you.
-              Fill out the form and I&apos;ll get back to you as soon as possible.
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--text)' }}>Contact Information</h3>
+            <p className="card-body" style={{ fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
+              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
 
-            <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(56, 189, 248, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-strong)' }}>
-                  <i className="fa-solid fa-phone" />
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--accent-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', fontSize: '1.2rem' }}>
+                  <FiPhone />
                 </div>
-                <span style={{ color: 'var(--text)', fontWeight: 500 }}>+91-9361207221</span>
+                <div>
+                   <p style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.1rem' }}>Phone</p>
+                   <span style={{ color: 'var(--text)', fontWeight: 600 }}>+91-9361207221</span>
+                </div>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(56, 189, 248, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-strong)' }}>
-                  <i className="fa-solid fa-envelope" />
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--accent-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', fontSize: '1.2rem' }}>
+                  <FiMail />
                 </div>
-                <a href="mailto:mohanavijayanj@gmail.com" style={{ color: 'var(--text)', fontWeight: 500, textDecoration: 'none' }}>mohanavijayanj@gmail.com</a>
+                <div>
+                   <p style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.1rem' }}>Email</p>
+                   <a href="mailto:mohanavijayanj@gmail.com" style={{ color: 'var(--text)', fontWeight: 600, textDecoration: 'none' }}>mohanavijayanj@gmail.com</a>
+                </div>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(56, 189, 248, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-strong)' }}>
-                  <i className="fa-brands fa-linkedin" />
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--accent-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', fontSize: '1.2rem' }}>
+                  <FiLinkedin />
                 </div>
-                <a href="https://linkedin.com/in/mohanavijayan-j" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text)', fontWeight: 500, textDecoration: 'none' }}>linkedin.com/in/mohanavijayan-j</a>
+                <div>
+                   <p style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.1rem' }}>LinkedIn</p>
+                   <a href="https://linkedin.com/in/mohanavijayan-j" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text)', fontWeight: 600, textDecoration: 'none' }}>mohanavijayan-j</a>
+                </div>
               </div>
-
             </div>
           </motion.div>
 
@@ -91,26 +105,27 @@ const Contact = () => {
             className="glass-card contact-form"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ background: 'var(--bg-elevated)', padding: '2rem' }}
           >
             <div className="form-group">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Full Name</label>
               <input
                 id="name"
                 name="user_name"
                 type="text"
-                placeholder="Your name"
+                placeholder="John Doe"
                 required
               />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email Address</label>
               <input
                 id="email"
                 name="user_email"
                 type="email"
-                placeholder="you@example.com"
+                placeholder="john@example.com"
                 required
               />
             </div>
@@ -120,8 +135,8 @@ const Contact = () => {
               <textarea
                 id="message"
                 name="message"
-                placeholder="Your message here..."
-                rows={4}
+                placeholder="Tell me about your project..."
+                rows={5}
                 required
               />
             </div>
@@ -129,13 +144,19 @@ const Contact = () => {
               type="submit"
               className="btn primary-btn full-width"
               disabled={isSubmitting}
+              style={{ padding: '1rem', marginTop: '1rem' }}
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? 'Sending...' : (
+                  <>
+                    Send Message <FiSend style={{ marginLeft: '0.5rem' }} />
+                  </>
+              )}
             </button>
             {status.message && (
               <p
                 className={`form-status ${status.type === 'success' ? 'success' : 'error'
                   }`}
+                style={{ marginTop: '1rem', textAlign: 'center' }}
               >
                 {status.message}
               </p>
@@ -148,4 +169,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

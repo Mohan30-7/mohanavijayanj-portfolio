@@ -3,49 +3,61 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section id="about" className="section" data-aos="fade-up">
+    <section id="about" className="section">
       <div className="section-inner">
-        <div className="section-header">
-          <h2>About Me</h2>
-          <p>Get to know me.</p>
+        <div className="section-header" style={{ marginBottom: '3rem' }}>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text)', textTransform: 'none' }}
+          >
+            About <span className="accent">Me</span>
+          </motion.h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-          <motion.div
-            className="glass-card about-card"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+
+        <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+          <motion.div 
+            className="about-image"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p>
-              Enthusiastic and self-motivated web developer with a strong foundation in HTML5, CSS3, JavaScript (ES6+), Bootstrap, React.js, Node.js, Express.js, and MongoDB. Completed MERN stack training and built responsive, user-focused web applications.
-            </p>
-            <p>
-              Hands-on exposure to Python through a data science internship. Eager to contribute to real-world projects and grow as a full-stack developer.
-            </p>
-            <p>
-              I am currently looking for an entry-level <span className="accent">Full Stack / Web Developer</span> position, and I am also very comfortable and open to <span className="accent">Java backend-friendly</span> roles.
-            </p>
+            <div className="glass-card" style={{ padding: '0', overflow: 'hidden', aspectRatio: '1/1', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-elevated)' }}>
+              <span style={{ fontSize: '5rem' }}>👨‍💻</span>
+            </div>
           </motion.div>
 
-          <motion.div
-            style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+          <motion.div 
+            className="about-content"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="glass-card" style={{ padding: '1.5rem' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.1rem', color: 'var(--accent-strong)' }}>Location</h3>
-              <p style={{ margin: 0, color: 'var(--muted)' }}>Puducherry / Chennai</p>
-              <p style={{ margin: '0.2rem 0 0', fontSize: '0.85rem', color: 'var(--text)' }}>Open to relocation</p>
-            </div>
-            <div className="glass-card" style={{ padding: '1.5rem' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.1rem', color: 'var(--accent-strong)' }}>Languages</h3>
-              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                <span className="chip chip-soft">Tamil</span>
-                <span className="chip chip-soft">English</span>
-              </div>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text)' }}>
+              Passionate Developer & Problem Solver
+            </h3>
+            <p className="card-body" style={{ fontSize: '1.1rem', lineHeight: '1.7', color: 'var(--muted)' }}>
+              I am a **Full Stack Developer** specializing in the **MERN Stack** and **Spring Boot**. With a strong foundation in Computer Science, I focus on building scalable web applications with secure authentication, efficient REST APIs, and highly interactive user interfaces.
+            </p>
+            <p className="card-body" style={{ fontSize: '1.1rem', lineHeight: '1.7', color: 'var(--muted)' }}>
+              I graduated with a **B.Tech in Computer Science and Engineering in 2025**. During my academic journey, I've developed a keen interest in data analytics and visualization, utilizing Python to derive meaningful insights from complex datasets.
+            </p>
+            <p className="card-body" style={{ fontSize: '1.1rem', lineHeight: '1.7', color: 'var(--muted)' }}>
+                Recent experience includes a **6-week internship at MSME**, where I developed a Sales Analysis Dashboard for a Supermarket using Python and Streamlit, showcasing my ability to bridge the gap between backend logic and data-driven decision making.
+            </p>
+            
+            <div style={{ marginTop: '2rem', display: 'flex', gap: '2rem' }}>
+                <div>
+                    <h4 style={{ color: 'var(--accent)', marginBottom: '0.25rem' }}>Education</h4>
+                    <p style={{ fontSize: '0.9rem' }}>B.Tech CSE, 2025</p>
+                </div>
+                <div>
+                    <h4 style={{ color: 'var(--accent)', marginBottom: '0.25rem' }}>Specialization</h4>
+                    <p style={{ fontSize: '0.9rem' }}>Full Stack Development</p>
+                </div>
             </div>
           </motion.div>
         </div>
@@ -55,4 +67,3 @@ const About = () => {
 };
 
 export default About;
-

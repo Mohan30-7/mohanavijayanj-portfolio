@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FiGraduationCap, FiCalendar, FiCheckCircle } from 'react-icons/fi';
 
 const educationList = [
     {
@@ -24,29 +25,44 @@ const educationList = [
 
 const Education = () => {
     return (
-        <section id="education" className="section" data-aos="fade-up">
+        <section id="education" className="section">
             <div className="section-inner">
-                <div className="section-header">
-                    <h2>Education</h2>
-                    <p>My academic background.</p>
+                <div className="section-header" style={{ marginBottom: '3rem' }}>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text)', textTransform: 'none' }}
+                    >
+                        Academic <span className="accent">Background</span>
+                    </motion.h2>
                 </div>
-                <div className="education-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.8rem' }}>
+
+                <div className="education-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
                     {educationList.map((edu, index) => (
                         <motion.div
                             key={edu.degree}
                             className="glass-card"
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 0.6, delay: index * 0.15 }}
-                            style={{ display: 'flex', flexDirection: 'column', padding: '1.8rem' }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem', background: 'var(--bg-elevated)' }}
                         >
-                            <h3 style={{ fontSize: '1.15rem', color: 'var(--accent-strong)', marginBottom: '0.4rem', lineHeight: 1.3 }}>{edu.degree}</h3>
-                            <p style={{ fontSize: '0.95rem', color: 'var(--text)', fontWeight: 500, margin: '0 0 0.8rem' }}>{edu.institution}</p>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', color: 'var(--accent)', fontSize: '1.2rem' }}>
+                                <FiGraduationCap />
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text)', margin: 0, lineHeight: 1.4 }}>{edu.degree}</h3>
+                            </div>
+                            
+                            <p style={{ fontSize: '0.95rem', color: 'var(--muted)', marginBottom: '1.5rem', flex: 1 }}>{edu.institution}</p>
 
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid rgba(148, 163, 184, 0.2)' }}>
-                                <span style={{ fontSize: '0.86rem', color: 'var(--muted)' }}>{edu.duration}</span>
-                                <span className="chip chip-soft" style={{ fontWeight: 600, color: 'var(--accent)' }}>{edu.score}</span>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1rem', borderTop: '1px solid var(--border-soft)' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--muted)', fontSize: '0.85rem' }}>
+                                    <FiCalendar /> <span>{edu.duration}</span>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent)', fontWeight: 700, fontSize: '0.9rem' }}>
+                                    <FiCheckCircle /> <span>{edu.score}</span>
+                                </div>
                             </div>
                         </motion.div>
                     ))}
