@@ -78,15 +78,15 @@ const Hero = () => {
             >
               View Projects <FiArrowRight />
             </button>
-            <button
-              type="button"
+            <a
+              href="/MOHANAVIJAYAN_J_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn ghost-btn"
-              onClick={() => {
-                window.open('/MOHANAVIJAYAN_J_Resume.pdf', '_blank');
-              }}
+              download
             >
               Resume <FiDownload />
-            </button>
+            </a>
             <button
               type="button"
               className="btn ghost-btn"
