@@ -1,8 +1,6 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiDownload } from 'react-icons/fi';
-import Particles from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
 
 import { 
   SiNodedotjs, SiExpress, SiMongodb, SiSpringboot, SiPython
@@ -30,10 +28,6 @@ const technologies = [
 const Hero = () => {
   const [techIndex, setTechIndex] = React.useState(0);
 
-  const particlesInit = useCallback(async (engine) => {
-    await loadSlim(engine);
-  }, []);
-
   React.useEffect(() => {
     const timer = setInterval(() => {
       setTechIndex((prev) => (prev + 1) % technologies.length);
@@ -50,53 +44,6 @@ const Hero = () => {
 
   return (
     <section id="home" className="section hero-section">
-      {/* Layer 1: Aurora Background */}
-      <div className="aurora-container">
-        <div className="aurora-bg"></div>
-        <div className="aurora-bg-2"></div>
-      </div>
-
-      {/* Layer 2: Subtle tsparticles */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
-        <Particles
-          id="hero-particles"
-          init={particlesInit}
-          options={{
-            fullScreen: { enable: false },
-            fpsLimit: 120,
-            particles: {
-              color: { value: "#ffffff" },
-              move: {
-                enable: true,
-                speed: 0.5,
-                direction: "none",
-                random: true,
-                straight: false,
-                outModes: { default: "out" },
-              },
-              number: {
-                density: { enable: true, area: 800 },
-                value: 40,
-              },
-              opacity: {
-                value: 0.2,
-                animation: {
-                    enable: true,
-                    speed: 0.5,
-                    minimumValue: 0.1
-                }
-              },
-              shape: { type: "circle" },
-              size: {
-                value: { min: 1, max: 2 },
-              },
-            },
-            detectRetina: true,
-          }}
-          className="hero-particles-layer"
-        />
-      </div>
-
       <div className="section-inner hero-inner">
         <motion.div
           className="hero-content"

@@ -23,40 +23,9 @@ const BackgroundParticles = () => {
                     },
                 },
                 fpsLimit: 120,
-                interactivity: {
-                    events: {
-                        onClick: {
-                            enable: false,
-                            mode: "push",
-                        },
-                        onHover: {
-                            enable: true,
-                            mode: "grab",
-                        },
-                        resize: true,
-                    },
-                    modes: {
-                        push: {
-                            quantity: 4,
-                        },
-                        grab: {
-                            distance: 200,
-                            links: {
-                                opacity: 0.2
-                            }
-                        },
-                    },
-                },
                 particles: {
                     color: {
-                        value: "#22d3ee",
-                    },
-                    links: {
-                        color: "#22d3ee",
-                        distance: 150,
-                        enable: true,
-                        opacity: 0.1,
-                        width: 1,
+                        value: "#ffffff",
                     },
                     move: {
                         direction: "none",
@@ -65,7 +34,7 @@ const BackgroundParticles = () => {
                             default: "out",
                         },
                         random: true,
-                        speed: 2,
+                        speed: 0.3, // Slower motion
                         straight: false,
                     },
                     number: {
@@ -73,22 +42,22 @@ const BackgroundParticles = () => {
                             enable: true,
                             area: 800,
                         },
-                        value: 100,
+                        value: 50, // Lower density for performance
                     },
                     opacity: {
-                        value: 0.3,
+                        value: 0.15, // More subtle
                         random: true,
                         animation: {
                             enable: true,
-                            speed: 1,
-                            minimumValue: 0.1
+                            speed: 0.5,
+                            minimumValue: 0.05
                         }
                     },
                     shape: {
                         type: "circle",
                     },
                     size: {
-                        value: { min: 1, max: 4 },
+                        value: { min: 0.5, max: 1.5 }, // Smaller particles
                         random: true
                     },
                 },
