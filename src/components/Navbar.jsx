@@ -22,8 +22,8 @@ const Navbar = () => {
     <header className="navbar">
       <div className="navbar-inner">
         <div className="logo" onClick={() => handleScroll('home')}>
-          <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '1.2rem' }}>MV</span>
-          <span style={{ marginLeft: '4px', fontSize: '1.1rem', fontWeight: 600 }}>Portfolio</span>
+          <span className="logo-name">Mohanavijayan</span>
+          <span style={{ marginLeft: '6px', fontSize: '1.1rem', fontWeight: 600 }}>Portfolio</span>
         </div>
         <nav className="nav-links">
           {navItems.map((item) => (

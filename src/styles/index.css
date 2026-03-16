@@ -169,6 +169,13 @@ body {
   font-size: 0.9rem;
 }
 
+.logo-name {
+  font-family: 'Bulgaria', sans-serif;
+  font-size: 1.8rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
 .logo-text {
   font-size: 1rem;
 }
