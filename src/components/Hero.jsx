@@ -61,7 +61,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Developing Scalable Web Solutions
+            Developing Scalable Web Applications
           </motion.span>
           <h1 className="hero-title">
             Hi, I'm <span className="accent">Mohanavijayan J</span>

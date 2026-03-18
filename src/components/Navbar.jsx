@@ -52,7 +52,7 @@ const Navbar = () => {
     <header className="navbar">
       <div className="navbar-inner">
         <div className="logo" onClick={() => handleScroll('home')}>
-          <span className="logo-name">mohanavijayan</span>
+          <span className="logo-name">Mj</span>
           <span style={{ marginLeft: '6px', fontSize: '1.1rem', fontWeight: 600 }}>Portfolio</span>
         </div>
         <nav className="nav-links">
