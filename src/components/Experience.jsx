@@ -12,7 +12,7 @@ const experiences = [
         tech: ['Python', 'Pandas', 'NumPy', 'Streamlit', 'Matplotlib', 'Plotly'],
         github: 'https://github.com/Mohan30-7',
         demo: 'https://mohanavijayanj-supermarket-sales-analysis.streamlit.app/',
-        image: '/experience/msme-intern.png'
+        image: '/experience/intern.png'
     },
     {
         title: 'Frontend Web Development Intern',
@@ -23,7 +23,7 @@ const experiences = [
         tech: ['HTML5', 'CSS3', 'JavaScript', 'DOM Manipulation'],
         github: 'https://github.com/Mohan30-7',
         demo: 'https://mohanavijayanj-codealpha-tasks.vercel.app/',
-        image: '/experience/codealpha-intern2.png'
+        image: '/experience/intern1.png'
     }
 ];
 
