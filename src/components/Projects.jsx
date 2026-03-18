@@ -8,21 +8,24 @@ const projects = [
     description: 'A full-stack application for searching buses, booking seats, and management. Features a secure admin dashboard and responsive UI.',
     tech: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JWT'],
     github: 'https://github.com/Mohan30-7',
-    demo: 'https://mohanavijayanj-mern-bus-reservation-system.vercel.app/'
+    demo: 'https://mohanavijayanj-mern-bus-reservation-system.vercel.app/',
+    image: '/projects/mern-bus.png'
   },
   {
     title: 'Employee Management System',
     description: 'Full-stack EMS where admins can manage employee records. Built with robust backend architecture and RESTful APIs.',
     tech: ['Spring Boot', 'React.js', 'MySQL', 'REST API', 'Hibernate'],
     github: 'https://github.com/Mohan30-7',
-    demo: 'https://mohanavijayanj-ems-java-react.vercel.app/login'
+    demo: 'https://mohanavijayanj-ems-java-react.vercel.app/login',
+    image: '/projects/ems.png'
   },
   {
     title: 'MV Spark Website',
     description: 'A modern, high-performance responsive website designed to showcase company services with smooth navigation and clean UI.',
     tech: ['React', 'HTML5', 'CSS3', 'JavaScript', 'Responsive'],
     github: 'https://github.com/Mohan30-7/MV-Spark-Welders',
-    demo: 'https://mohanavijayanj-mv-spark-website.vercel.app/'
+    demo: 'https://mohanavijayanj-mv-spark-website.vercel.app/',
+    image: '/projects/mv-spark.png'
   }
 ];
 
@@ -83,9 +86,11 @@ const Projects = () => {
               variants={itemVariants}
             >
               <div className="project-image-wrapper">
-                <div className="project-image-placeholder">
-                  <span>Project Thumbnail Coming Soon</span>
-                </div>
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
               </div>
               
               <div className="project-content">
