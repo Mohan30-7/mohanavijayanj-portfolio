@@ -23,7 +23,7 @@ const experiences = [
         tech: ['HTML5', 'CSS3', 'JavaScript', 'DOM Manipulation'],
         github: 'https://github.com/Mohan30-7',
         demo: 'https://mohanavijayanj-codealpha-tasks.vercel.app/',
-        image: '/experience/codealpha-intern.png'
+        image: '/experience/codealpha-intern2.png'
     }
 ];
 
@@ -32,7 +32,7 @@ const Experience = () => {
         <section id="experience" className="section">
             <div className="section-inner">
                 <div className="section-header" style={{ marginBottom: '3rem' }}>
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -44,13 +44,13 @@ const Experience = () => {
 
                 <div className="experience-container" style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                     {experiences.map((exp, index) => (
-                        <motion.div 
+                        <motion.div
                             key={index}
                             className="experience-card glass-card"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            style={{ 
+                            style={{
                                 display: 'grid',
                                 gridTemplateColumns: 'minmax(300px, 1.2fr) 2fr',
                                 gap: '2rem',
@@ -61,13 +61,13 @@ const Experience = () => {
                             }}
                         >
                             <div className="experience-image" style={{ width: '100%', height: '100%', minHeight: '250px' }}>
-                                <img 
-                                    src={exp.image} 
-                                    alt={exp.company} 
+                                <img
+                                    src={exp.image}
+                                    alt={exp.company}
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 />
                             </div>
-                            
+
                             <div className="experience-info" style={{ padding: '2rem' }}>
                                 <h3 style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.5rem' }}>{exp.title}</h3>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent)', fontWeight: 600 }}>
@@ -78,7 +78,7 @@ const Experience = () => {
                                     <span style={{ margin: '0 0.5rem' }}>•</span>
                                     <BsGeoAlt /> <span>{exp.location}</span>
                                 </div>
-                                
+
                                 <p style={{ marginTop: '1.5rem', lineHeight: 1.7, color: 'var(--text-soft)' }}>
                                     {exp.description}
                                 </p>
