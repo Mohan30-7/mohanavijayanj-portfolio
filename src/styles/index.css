@@ -756,25 +756,22 @@ body {
   border-top: 1px solid var(--border-soft);
 }
 
-.experience-card .experience-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  margin-bottom: 1rem;
+.experience-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.experience-card h3 {
-  margin: 0;
+.experience-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent) !important;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
 }
 
-.experience-company {
-  font-size: 0.9rem;
-  color: var(--muted);
+.experience-image img {
+  transition: transform 0.5s ease;
 }
 
-.experience-project {
-  margin: 0 0 0.8rem;
-  font-size: 0.95rem;
+.experience-card:hover .experience-image img {
+  transform: scale(1.05);
 }
 
 .experience-list {
@@ -785,6 +782,44 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+@media (max-width: 991px) {
+  .experience-card {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .experience-image {
+    height: 250px !important;
+    min-height: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .hero-orbit {
+    margin: 0 auto;
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .contact-grid {
