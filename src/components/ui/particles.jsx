@@ -17,10 +17,12 @@ export default function Particles({
   const canvasRef = useRef(null);
   const canvasContainerRef = useRef(null);
   const context = useRef(null);
-  const circle = useRef([]);
+  const circles = useRef([]);
   const mouse = useRef({ x: 0, y: 0 });
   const canvasSize = useRef({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+
+  const rafId = useRef(null);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -31,6 +33,9 @@ export default function Particles({
     window.addEventListener("resize", initCanvas);
 
     return () => {
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
       window.removeEventListener("resize", initCanvas);
     };
   }, [color]);
@@ -60,7 +65,7 @@ export default function Particles({
 
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
-      circle.current = [];
+      circles.current = [];
       canvasSize.current.w = canvasContainerRef.current.offsetWidth;
       canvasSize.current.h = canvasContainerRef.current.offsetHeight;
       canvasRef.current.width = canvasSize.current.w * dpr;
@@ -107,7 +112,7 @@ export default function Particles({
       context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       if (!update) {
-        circle.current.push(circle);
+        circles.current.push(circle);
       }
     }
   };
@@ -121,6 +126,7 @@ export default function Particles({
   };
 
   const drawParticles = () => {
+    if (!context.current) return;
     context.current.clearRect(
       0,
       0,
@@ -145,13 +151,14 @@ export default function Particles({
   };
 
   const animate = () => {
+    if (!context.current) return;
     context.current.clearRect(
       0,
       0,
       canvasSize.current.w,
       canvasSize.current.h
     );
-    circle.current.forEach((circle, i) => {
+    circles.current.forEach((circle, i) => {
       // Handle the alpha
       const edge = [
         circle.x + circle.translateX - circle.size, // left
@@ -190,7 +197,7 @@ export default function Particles({
         circle.y > canvasSize.current.h + circle.size
       ) {
         // remove the circle from the array
-        circle.current.splice(i, 1);
+        circles.current.splice(i, 1);
         // add a new circle
         const newCircle = circleParams();
         drawCircle(newCircle);
@@ -209,7 +216,7 @@ export default function Particles({
         );
       }
     });
-    window.requestAnimationFrame(animate);
+    rafId.current = window.requestAnimationFrame(animate);
   };
 
   return (
