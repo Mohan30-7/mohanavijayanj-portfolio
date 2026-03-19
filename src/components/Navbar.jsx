@@ -12,6 +12,7 @@ const navItems = [
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const observerOptions = {
@@ -33,19 +34,32 @@ const Navbar = () => {
     // Select all sections that have an ID matching our navItems
     navItems.forEach((item) => {
       const element = document.getElementById(item.target);
-      if (element) {
-        observer.observe(element);
-      }
+      if (element) observer.observe(element);
     });
 
     return () => observer.disconnect();
   }, []);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleClick = (e) => {
+      if (!e.target.closest('.navbar')) setMenuOpen(false);
+    };
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, [menuOpen]);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
   const handleScroll = (id) => {
+    setMenuOpen(false);
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
@@ -55,6 +69,8 @@ const Navbar = () => {
           <span className="logo-name">Mj</span>
           <span style={{ marginLeft: '6px', fontSize: '1.1rem', fontWeight: 600 }}>Portfolio</span>
         </div>
+
+        {/* Desktop Nav */}
         <nav className="nav-links">
           {navItems.map((item) => (
             <button
@@ -67,10 +83,38 @@ const Navbar = () => {
             </button>
           ))}
         </nav>
+
+        {/* Hamburger Button (mobile only) */}
+        <button
+          type="button"
+          className="hamburger-btn"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span className={`hamburger-line ${menuOpen ? 'open' : ''}`} />
+          <span className={`hamburger-line ${menuOpen ? 'open' : ''}`} />
+          <span className={`hamburger-line ${menuOpen ? 'open' : ''}`} />
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      <div className={`mobile-menu ${menuOpen ? 'mobile-menu--open' : ''}`}>
+        <nav className="mobile-nav">
+          {navItems.map((item) => (
+            <button
+              key={item.target}
+              type="button"
+              className={`mobile-nav-link ${activeSection === item.target ? 'active' : ''}`}
+              onClick={() => handleScroll(item.target)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </nav>
       </div>
     </header>
   );
 };
 
-export default Navbar;
 
