@@ -9,7 +9,7 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTopButton from './components/ScrollToTopButton';
-import BackgroundParticles from './components/BackgroundParticles';
+import Particles from './components/ui/particles';
 
 const App = () => {
   return (
@@ -21,7 +21,13 @@ const App = () => {
       </div>
       
       {/* Global Background Layer 2: Particles */}
-      <BackgroundParticles />
+      <Particles
+        className="fixed inset-0 -z-10"
+        quantity={150}
+        ease={80}
+        color="#ffffff"
+        refresh
+      />
       
       <Navbar />
       <main>
