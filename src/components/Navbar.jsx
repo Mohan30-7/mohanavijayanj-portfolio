@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import MJLogo from './MJLogo';
 
 const navItems = [
   { label: 'Home', target: 'home' },
