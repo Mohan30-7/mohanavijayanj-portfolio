@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import MJLogo from './MJLogo';
 
 const navItems = [
   { label: 'Home', target: 'home' },
@@ -66,8 +67,8 @@ const Navbar = () => {
     <header className="navbar">
       <div className="navbar-inner">
         <div className="logo" onClick={() => handleScroll('home')}>
-          <span className="logo-name">Mj</span>
-          <span style={{ marginLeft: '6px', fontSize: '1.1rem', fontWeight: 600 }}>Portfolio</span>
+          <MJLogo size={32} />
+          <span style={{ marginLeft: '10px', fontSize: '1.1rem', fontWeight: 600 }}>Portfolio</span>
         </div>
 
         {/* Desktop Nav */}

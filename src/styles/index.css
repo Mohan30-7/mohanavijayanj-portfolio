@@ -174,7 +174,6 @@ body {
 }
 
 .logo-name {
-  font-family: 'Gv. time', sans-serif;
   font-size: 2.6rem;
   background: linear-gradient(to bottom right, #38bdf8, #818cf8);
   -webkit-background-clip: text;
@@ -183,6 +182,16 @@ body {
   line-height: 1;
   font-weight: bold;
   display: inline-block;
+}
+
+.premium-logo {
+  filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.premium-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.5));
 }
 
 .logo-text {
@@ -492,7 +501,6 @@ body {
 }
 
 .avatar-initials {
-  font-family: 'Bulgaria', sans-serif;
   font-size: 3.5rem;
   font-weight: 400;
   letter-spacing: 0;

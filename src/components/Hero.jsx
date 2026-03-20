@@ -6,6 +6,7 @@ import {
   SiNodedotjs, SiExpress, SiMongodb, SiSpringboot, SiPython, SiReact, SiMysql
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa6';
+import MJLogo from './MJLogo';
 
 const orbitTech = [
   { name: 'Java', icon: <FaJava />, color: '#ED8B00', angle: 0 },
@@ -132,7 +133,7 @@ const Hero = () => {
           style={{ position: 'relative', zIndex: 20 }}
         >
           <div className="hero-avatar">
-            <span className="avatar-initials">MJ</span>
+            <MJLogo size={60} />
           </div>
           <div className="orbit orbit-1" />
           <div className="orbit orbit-2" />
