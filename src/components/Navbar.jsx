@@ -66,8 +66,8 @@ const Navbar = () => {
     <header className="navbar">
       <div className="navbar-inner">
         <div className="logo" onClick={() => handleScroll('home')}>
-          <MJLogo size={32} />
-          <span style={{ marginLeft: '10px', fontSize: '1.1rem', fontWeight: 600 }}>Portfolio</span>
+          <span className="logo-name">MJ</span>
+          <span style={{ marginLeft: '6px', fontSize: '1.1rem', fontWeight: 600 }}>Portfolio</span>
         </div>
 
         {/* Desktop Nav */}
