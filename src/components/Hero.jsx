@@ -132,7 +132,7 @@ const Hero = () => {
           style={{ position: 'relative', zIndex: 20 }}
         >
           <div className="hero-avatar">
-            <span className="avatar-initials">Mj</span>
+            <span className="avatar-initials">MJ</span>
           </div>
           <div className="orbit orbit-1" />
           <div className="orbit orbit-2" />
