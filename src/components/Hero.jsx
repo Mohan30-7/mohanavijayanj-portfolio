@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiDownload } from 'react-icons/fi';
 
-import { 
+import {
   SiNodedotjs, SiExpress, SiMongodb, SiSpringboot, SiPython, SiReact, SiMysql
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa6';
@@ -55,7 +55,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           style={{ position: 'relative', zIndex: 10 }}
         >
-          <motion.span 
+          <motion.span
             className="hero-eyebrow"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -103,16 +103,16 @@ const Hero = () => {
             <span className="tech-label">Core Tech Stack:</span>
             <div className="typing-carousel" style={{ height: '2rem', marginTop: '0.5rem', position: 'relative' }}>
               <AnimatePresence mode="wait">
-                <motion.span 
+                <motion.span
                   key={technologies[techIndex]}
                   className="typing-item"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.6 }}
-                  style={{ 
-                    position: 'absolute', 
-                    color: 'var(--accent)', 
+                  style={{
+                    position: 'absolute',
+                    color: 'var(--accent)',
                     fontWeight: 600,
                     fontSize: '1.2rem'
                   }}
@@ -132,12 +132,12 @@ const Hero = () => {
           style={{ position: 'relative', zIndex: 20 }}
         >
           <div className="hero-avatar">
-            <span className="avatar-initials">MJ</span>
+            <span className="avatar-initials">Mj</span>
           </div>
           <div className="orbit orbit-1" />
           <div className="orbit orbit-2" />
           <div className="orbit orbit-3" />
-          
+
           {/* Rotating container for tech badges */}
           <motion.div
             style={{
@@ -155,7 +155,7 @@ const Hero = () => {
               const radius = 162; // Matches orbit-3 radius
               const x = Math.cos(tech.angle * (Math.PI / 180)) * radius;
               const y = Math.sin(tech.angle * (Math.PI / 180)) * radius;
-              
+
               return (
                 <motion.div
                   key={tech.name}
@@ -169,12 +169,12 @@ const Hero = () => {
                   <motion.div
                     animate={{ rotate: -360 }}
                     transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                    className="glass-card" 
-                    style={{ 
-                      padding: '0.4rem 0.8rem', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: '0.4rem', 
+                    className="glass-card"
+                    style={{
+                      padding: '0.4rem 0.8rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.4rem',
                       fontSize: '0.75rem',
                       background: 'rgba(15, 23, 42, 0.85)',
                       borderColor: 'rgba(148, 163, 184, 0.4)',

@@ -10,7 +10,7 @@ const experiences = [
         location: 'Pondicherry',
         description: 'Performed in-depth data analysis on supermarket sales datasets. Developed an interactive dashboard using Python and Streamlit to visualize sales trends, payment methods, and customer demographics, providing actionable insights for business optimization.',
         tech: ['Python', 'Pandas', 'NumPy', 'Streamlit', 'Matplotlib', 'Plotly'],
-        github: 'https://github.com/Mohan30-7',
+        github: 'https://github.com/Mohan30-7/Supermarket-Sales-Analysis',
         demo: 'https://mohanavijayanj-supermarket-sales-analysis.streamlit.app/',
         image: '/experience/intern.png'
     },
@@ -21,7 +21,7 @@ const experiences = [
         location: 'Remote',
         description: 'Developed interactive frontend applications as part of the internship tasks, including an Image Gallery, Calculator, and Music Player. Focused on creating responsive and intuitive user interfaces using modern web technologies.',
         tech: ['HTML5', 'CSS3', 'JavaScript', 'DOM Manipulation'],
-        github: 'https://github.com/Mohan30-7',
+        github: 'https://github.com/Mohan30-7/codealpha-tasks',
         demo: 'https://mohanavijayanj-codealpha-tasks.vercel.app/',
         image: '/experience/intern1.png'
     }

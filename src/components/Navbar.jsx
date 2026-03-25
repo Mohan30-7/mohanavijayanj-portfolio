@@ -17,7 +17,7 @@ const Navbar = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-10% 0px -80% 0px', // Adjusted to trigger when section is at the top
+      rootMargin: '-10% 0px -80% 0px',
       threshold: 0
     };
 
@@ -30,8 +30,8 @@ const Navbar = () => {
     };
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
-    
-    // Select all sections that have an ID matching our navItems
+
+
     navItems.forEach((item) => {
       const element = document.getElementById(item.target);
       if (element) observer.observe(element);
@@ -66,7 +66,7 @@ const Navbar = () => {
     <header className="navbar">
       <div className="navbar-inner">
         <div className="logo" onClick={() => handleScroll('home')}>
-          <span className="logo-name">MJ</span>
+          <span className="logo-name">Mj</span>
           <span style={{ marginLeft: '6px', fontSize: '1.1rem', fontWeight: 600 }}>Portfolio</span>
         </div>
 

@@ -7,7 +7,7 @@ const projects = [
     title: 'MERN Bus Reservation System',
     description: 'A full-stack application for searching buses, booking seats, and management. Features a secure admin dashboard and responsive UI.',
     tech: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JWT'],
-    github: 'https://github.com/Mohan30-7',
+    github: 'https://github.com/Mohan30-7/mern-bus-reservation-system',
     demo: 'https://mohanavijayanj-mern-bus-reservation-system.vercel.app/',
     image: '/projects/mern-bus.png'
   },
@@ -15,7 +15,7 @@ const projects = [
     title: 'Employee Management System',
     description: 'Full-stack EMS where admins can manage employee records. Built with robust backend architecture and RESTful APIs.',
     tech: ['Spring Boot', 'React.js', 'MySQL', 'REST API', 'Hibernate'],
-    github: 'https://github.com/Mohan30-7',
+    github: 'https://github.com/Mohan30-7/ems-java-react',
     demo: 'https://mohanavijayanj-ems-java-react.vercel.app/login',
     image: '/projects/ems.png'
   },
@@ -23,7 +23,7 @@ const projects = [
     title: 'MV Spark Website',
     description: 'A modern, high-performance responsive website designed to showcase company services with smooth navigation and clean UI.',
     tech: ['React', 'HTML5', 'CSS3', 'JavaScript', 'Responsive'],
-    github: 'https://github.com/Mohan30-7/MV-Spark-Welders',
+    github: 'https://github.com/Mohan30-7/mv-spark-website',
     demo: 'https://mohanavijayanj-mv-spark-website.vercel.app/',
     image: '/projects/mv-spark.png'
   }
