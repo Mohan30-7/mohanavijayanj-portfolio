@@ -3,122 +3,145 @@ import { motion } from 'framer-motion';
 import { BsBriefcase, BsCalendar3, BsGeoAlt, BsGithub, BsBoxArrowUpRight } from 'react-icons/bs';
 
 const experiences = [
-    {
-        title: 'Data Science Intern',
-        company: 'MSME, Govt. of India',
-        duration: '6 Weeks (Internship)',
-        location: 'Pondicherry',
-        description: 'Performed in-depth data analysis on supermarket sales datasets. Developed an interactive dashboard using Python and Streamlit to visualize sales trends, payment methods, and customer demographics, providing actionable insights for business optimization.',
-        tech: ['Python', 'Pandas', 'NumPy', 'Streamlit', 'Matplotlib', 'Plotly'],
-        github: 'https://github.com/Mohan30-7/Supermarket-Sales-Analysis',
-        demo: 'https://mohanavijayanj-supermarket-sales-analysis.streamlit.app/',
-        image: '/experience/intern.png'
-    },
-    {
-        title: 'Frontend Web Development Intern',
-        company: 'CodeAlpha',
-        duration: '4 Weeks',
-        location: 'Remote',
-        description: 'Developed interactive frontend applications as part of the internship tasks, including an Image Gallery, Calculator, and Music Player. Focused on creating responsive and intuitive user interfaces using modern web technologies.',
-        tech: ['HTML5', 'CSS3', 'JavaScript', 'DOM Manipulation'],
-        github: 'https://github.com/Mohan30-7/codealpha-tasks',
-        demo: 'https://mohanavijayanj-codealpha-tasks.vercel.app/',
-        image: '/experience/intern1.png'
-    }
+  {
+    title: 'Data Science Intern',
+    company: 'MSME, Govt. of India',
+    duration: '6 Weeks',
+    location: 'Pondicherry',
+    description: 'Performed in-depth data analysis on supermarket sales datasets. Developed an interactive dashboard using Python and Streamlit to visualize sales trends, payment methods, and customer demographics.',
+    tech: ['Python', 'Pandas', 'NumPy', 'Streamlit', 'Matplotlib', 'Plotly'],
+    github: 'https://github.com/Mohan30-7/Supermarket-Sales-Analysis',
+    demo: 'https://mohanavijayanj-supermarket-sales-analysis.streamlit.app/',
+    accentColor: '#22d3ee',
+    image: '/experience/intern.png',
+  },
+  {
+    title: 'Frontend Web Development Intern',
+    company: 'CodeAlpha',
+    duration: '4 Weeks',
+    location: 'Remote',
+    description: 'Developed interactive frontend applications as part of internship tasks, including an Image Gallery, Calculator, and Music Player. Focused on responsive and intuitive user interfaces.',
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'DOM Manipulation'],
+    github: 'https://github.com/Mohan30-7/codealpha-tasks',
+    demo: 'https://mohanavijayanj-codealpha-tasks.vercel.app/',
+    accentColor: '#818cf8',
+    image: '/experience/intern1.png',
+  },
 ];
 
 const Experience = () => {
-    return (
-        <section id="experience" className="section">
-            <div className="section-inner">
-                <div className="section-header" style={{ marginBottom: '3rem' }}>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text)', textTransform: 'none' }}
-                    >
-                        Work <span className="accent">Experience</span>
-                    </motion.h2>
+  return (
+    <section id="experience" className="section">
+      <div className="section-inner">
+        <div className="section-header" style={{ marginBottom: '3rem' }}>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text)', textTransform: 'none' }}
+          >
+            Work <span className="accent">Experience</span>
+          </motion.h2>
+        </div>
+
+        {/* Vertical Timeline */}
+        <div className="timeline">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              className="timeline-item"
+              initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+            >
+              {/* Connector dot */}
+              <div
+                className="timeline-dot"
+                style={{
+                  borderColor: exp.accentColor,
+                  boxShadow: `0 0 16px ${exp.accentColor}55`,
+                }}
+              >
+                <BsBriefcase style={{ color: exp.accentColor, fontSize: '0.85rem' }} />
+              </div>
+
+              {/* Card */}
+              <div
+                className="timeline-card glass-card"
+                style={{ borderLeft: `3px solid ${exp.accentColor}`, padding: 0, overflow: 'hidden' }}
+              >
+                {/* Thumbnail */}
+                <div className="exp-thumbnail-wrapper">
+                  <img
+                    src={exp.image}
+                    alt={`${exp.company} thumbnail`}
+                    loading="lazy"
+                    className="exp-thumbnail-img"
+                  />
+                  <div
+                    className="exp-thumbnail-overlay"
+                    style={{ background: `linear-gradient(to right, ${exp.accentColor}22, transparent)` }}
+                  />
                 </div>
 
-                <div className="experience-container" style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-                    {experiences.map((exp, index) => (
-                        <motion.div
-                            key={index}
-                            className="experience-card glass-card"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            style={{
-                                display: 'grid',
-                                gridTemplateColumns: 'minmax(300px, 1.2fr) 2fr',
-                                gap: '2rem',
-                                padding: '0',
-                                overflow: 'hidden',
-                                background: 'var(--bg-elevated)',
-                                border: '1px solid rgba(255, 255, 255, 0.05)'
-                            }}
-                        >
-                            <div className="experience-image" style={{ width: '100%', height: '100%', minHeight: '250px' }}>
-                                <img
-                                    src={exp.image}
-                                    alt={exp.company}
-                                    loading="lazy"
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                />
-                            </div>
+                {/* Content */}
+                <div style={{ padding: '1.75rem 2rem' }}>
+                  {/* Header */}
+                  <div style={{ marginBottom: '1rem' }}>
+                    <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.3rem' }}>
+                      {exp.title}
+                    </h3>
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      color: exp.accentColor,
+                      fontWeight: 600,
+                      fontSize: '0.95rem',
+                      flexWrap: 'wrap',
+                    }}>
+                      <BsBriefcase />
+                      <span>{exp.company}</span>
+                      <span style={{ color: 'var(--border-soft)' }}>·</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: 'var(--muted)', fontWeight: 400, fontSize: '0.85rem' }}>
+                        <BsCalendar3 />
+                        <span>{exp.duration}</span>
+                      </div>
+                      <span style={{ color: 'var(--border-soft)' }}>·</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: 'var(--muted)', fontWeight: 400, fontSize: '0.85rem' }}>
+                        <BsGeoAlt />
+                        <span>{exp.location}</span>
+                      </div>
+                    </div>
+                  </div>
 
-                            <div className="experience-info" style={{ padding: '2rem' }}>
-                                <h3 style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.5rem' }}>{exp.title}</h3>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent)', fontWeight: 600 }}>
-                                    <BsBriefcase /> <span>{exp.company}</span>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--muted)', fontSize: '0.9rem', marginTop: '0.5rem' }}>
-                                    <BsCalendar3 /> <span style={{ marginRight: '0.5rem' }}>{exp.duration}</span>
-                                    <span style={{ margin: '0 0.5rem' }}>•</span>
-                                    <BsGeoAlt /> <span>{exp.location}</span>
-                                </div>
+                  <p style={{ lineHeight: 1.75, color: 'var(--muted)', marginBottom: '1.25rem', fontSize: '0.95rem' }}>
+                    {exp.description}
+                  </p>
 
-                                <p style={{ marginTop: '1.5rem', lineHeight: 1.7, color: 'var(--text-soft)' }}>
-                                    {exp.description}
-                                </p>
-
-                                <div className="project-tech" style={{ marginTop: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                    {exp.tech.map((tech) => (
-                                        <span key={tech} className="tech-badge">
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
-                                    <a
-                                        href={exp.demo}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="btn primary-btn small-btn"
-                                        style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem' }}
-                                    >
-                                        <BsBoxArrowUpRight /> Live Demo
-                                    </a>
-                                    <a
-                                        href={exp.github}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="btn ghost-btn small-btn"
-                                        style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem' }}
-                                    >
-                                        <BsGithub /> GitHub
-                                    </a>
-                                </div>
-                            </div>
-                        </motion.div>
+                  <div className="project-tech" style={{ marginBottom: '1.5rem' }}>
+                    {exp.tech.map(tech => (
+                      <span key={tech} className="tech-badge">{tech}</span>
                     ))}
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <a href={exp.demo} target="_blank" rel="noreferrer" className="btn primary-btn small-btn">
+                      <BsBoxArrowUpRight /> Live Demo
+                    </a>
+                    <a href={exp.github} target="_blank" rel="noreferrer" className="btn ghost-btn small-btn">
+                      <BsGithub /> GitHub
+                    </a>
+                  </div>
                 </div>
-            </div>
-        </section>
-    );
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Experience;

@@ -5,33 +5,37 @@ const navItems = [
   { label: 'About', target: 'about' },
   { label: 'Skills', target: 'skills' },
   { label: 'Projects', target: 'projects' },
-  { label: 'Experience', target: 'experience' },
   { label: 'Education', target: 'education' },
-  { label: 'Contact', target: 'contact' }
+  { label: 'Certifications', target: 'certifications' },
+  { label: 'GitHub', target: 'github' },
+  { label: 'Contact', target: 'contact' },
 ];
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const observerOptions = {
       root: null,
       rootMargin: '-10% 0px -80% 0px',
-      threshold: 0
+      threshold: 0,
     };
 
     const handleIntersect = (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
+        if (entry.isIntersecting) setActiveSection(entry.target.id);
       });
     };
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
-
-
     navItems.forEach((item) => {
       const element = document.getElementById(item.target);
       if (element) observer.observe(element);
@@ -40,7 +44,6 @@ const Navbar = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Close menu when clicking outside
   useEffect(() => {
     if (!menuOpen) return;
     const handleClick = (e) => {
@@ -50,7 +53,6 @@ const Navbar = () => {
     return () => document.removeEventListener('click', handleClick);
   }, [menuOpen]);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -63,7 +65,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="navbar">
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar-inner">
         <div className="logo" onClick={() => handleScroll('home')}>
           <span className="logo-name">Mj</span>
@@ -84,7 +86,7 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Hamburger Button (mobile only) */}
+        {/* Hamburger Button */}
         <button
           type="button"
           className="hamburger-btn"

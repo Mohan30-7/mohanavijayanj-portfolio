@@ -1,0 +1,180 @@
+﻿[36mvite v6.4.1 [32mbuilding for production...[36m[39m
+transforming...
+node.exe : Found 4 warnings 
+while optimizing generated 
+CSS:
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Found 4  
+   warning... generated CS   
+ S::String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+
+Issue #1:
+[2mΓöé   }[22m
+[2mΓöé }[22m
+[2mΓöé[22m @import url('htt
+ps://fonts.cdnfonts.com/css/b
+ulgaria');
+[2mΓöå[22m        
+[33m[2m^--[22m @import 
+rules must precede all rules 
+aside from @charset and 
+@layer statements[39m
+[2mΓöå[22m
+[2mΓöé @import url('https://
+db.onlinewebfonts.com/c/1ba31
+c8c0034ef90a129f0a1763d5f0c?f
+amily=Gv.+time');[22m
+[2mΓöé @import url('https://
+db.onlinewebfonts.com/c/63223
+ef878254d628baf46793f672567?f
+amily=FenwayParkJF');[22m
+
+Issue #2:
+[2mΓöé }[22m
+[2mΓöé @import url('https://
+fonts.cdnfonts.com/css/bulgar
+ia');[22m
+[2mΓöé[22m @import url('htt
+ps://db.onlinewebfonts.com/c/
+1ba31c8c0034ef90a129f0a1763d5
+f0c?family=Gv.+time');
+[2mΓöå[22m        
+[33m[2m^--[22m @import 
+rules must precede all rules 
+aside from @charset and 
+@layer statements[39m
+[2mΓöå[22m
+[2mΓöé @import url('https://
+db.onlinewebfonts.com/c/63223
+ef878254d628baf46793f672567?f
+amily=FenwayParkJF');[22m
+[2mΓöé @import url('https://
+fonts.googleapis.com/css2?fam
+ily=Lobster&display=swap');[
+22m
+
+Issue #3:
+[2mΓöé @import url('https://
+fonts.cdnfonts.com/css/bulgar
+ia');[22m
+[2mΓöé @import url('https://
+db.onlinewebfonts.com/c/1ba31
+c8c0034ef90a129f0a1763d5f0c?f
+amily=Gv.+time');[22m
+[2mΓöé[22m @import url('htt
+ps://db.onlinewebfonts.com/c/
+63223ef878254d628baf46793f672
+567?family=FenwayParkJF');
+[2mΓöå[22m        
+[33m[2m^--[22m @import 
+rules must precede all rules 
+aside from @charset and 
+@layer statements[39m
+[2mΓöå[22m
+[2mΓöé @import url('https://
+fonts.googleapis.com/css2?fam
+ily=Lobster&display=swap');[
+22m
+[2mΓöé :root {[22m
+
+Issue #4:
+[2mΓöé @import url('https://
+db.onlinewebfonts.com/c/1ba31
+c8c0034ef90a129f0a1763d5f0c?f
+amily=Gv.+time');[22m
+[2mΓöé @import url('https://
+db.onlinewebfonts.com/c/63223
+ef878254d628baf46793f672567?f
+amily=FenwayParkJF');[22m
+[2mΓöé[22m @import url('htt
+ps://fonts.googleapis.com/css
+2?family=Lobster&display=swap
+');
+[2mΓöå[22m        
+[33m[2m^--[22m @import 
+rules must precede all rules 
+aside from @charset and 
+@layer statements[39m
+[2mΓöå[22m
+[2mΓöé :root {[22m
+[2mΓöé   --bg: #030712;[22m
+
+[32mΓ£ô[39m 761 modules transformed.
+[31mΓ£ù[39m Build failed 
+in 2.82s
+[31merror during build:
+[31msrc/components/GitHubSta
+ts.jsx (3:7): "default" is 
+not exported by "node_modules
+/react-github-calendar/build/
+index.js", imported by "src/c
+omponents/GitHubStats.jsx".[
+31m
+file: [36mD:/Portfolio/src/c
+omponents/GitHubStats.jsx:3:7
+[31m
+[33m
+1: import React from 'react';
+2: import { motion } from 
+'framer-motion';
+3: import GitHubCalendar 
+from 'react-github-calendar';
+          ^
+4: 
+5: const GitHubStats = () => 
+{
+[31m
+    at getRollupError (file:/
+//D:/Portfolio/node_modules/r
+ollup/dist/es/shared/parseAst
+.js:402:41)
+    at error (file:///D:/Port
+folio/node_modules/rollup/dis
+t/es/shared/parseAst.js:398:4
+2)
+    at Module.error (file:///
+D:/Portfolio/node_modules/rol
+lup/dist/es/shared/node-entry
+.js:17040:16)
+    at Module.traceVariable (
+file:///D:/Portfolio/node_mod
+ules/rollup/dist/es/shared/no
+de-entry.js:17452:29)
+    at 
+ModuleScope.findVariable (fil
+e:///D:/Portfolio/node_module
+s/rollup/dist/es/shared/node-
+entry.js:15070:39)
+    at ReturnValueScope.findV
+ariable (file:///D:/Portfolio
+/node_modules/rollup/dist/es/
+shared/node-entry.js:5673:38)
+    at FunctionBodyScope.find
+Variable (file:///D:/Portfoli
+o/node_modules/rollup/dist/es
+/shared/node-entry.js:5673:38
+)
+    at Identifier.bind (file:
+///D:/Portfolio/node_modules/
+rollup/dist/es/shared/node-en
+try.js:5447:40)
+    at CallExpression.bind (f
+ile:///D:/Portfolio/node_modu
+les/rollup/dist/es/shared/nod
+e-entry.js:2825:28)
+    at CallExpression.bind (f
+ile:///D:/Portfolio/node_modu
+les/rollup/dist/es/shared/nod
+e-entry.js:12179:15)[39m

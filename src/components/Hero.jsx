@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 import { FiArrowRight, FiDownload } from 'react-icons/fi';
 
 import {
@@ -18,31 +19,10 @@ const orbitTech = [
   { name: 'SQL', icon: <SiMysql />, color: '#4479A1', angle: 315 },
 ];
 
-const technologies = [
-  'MERN Stack',
-  'React.js',
-  'Node.js',
-  'Express.js',
-  'MongoDB',
-  'Spring Boot',
-  'Python'
-];
-
 const Hero = () => {
-  const [techIndex, setTechIndex] = React.useState(0);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setTechIndex((prev) => (prev + 1) % technologies.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
   const handleScroll = (id) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
@@ -52,9 +32,22 @@ const Hero = () => {
           className="hero-content"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           style={{ position: 'relative', zIndex: 10 }}
         >
+          {/* Open to Work Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 }}
+            style={{ marginBottom: '1rem' }}
+          >
+            <span className="open-to-work-badge">
+              <span className="otw-dot" />
+              Open to Work
+            </span>
+          </motion.div>
+
           <motion.span
             className="hero-eyebrow"
             initial={{ opacity: 0 }}
@@ -63,12 +56,15 @@ const Hero = () => {
           >
             Developing Scalable Web Applications
           </motion.span>
+
           <h1 className="hero-title">
             Hi, I'm <span className="accent">Mohanavijayan J</span>
           </h1>
+
           <h2 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--text)', marginBottom: '1rem' }}>
-            Full Stack Developer | MERN & Spring Boot
+            Full Stack Developer | MERN &amp; Spring Boot
           </h2>
+
           <p className="hero-subtitle">
             I build modern, performant web applications with clean architecture and delightful user experiences. Specializing in MERN stack and Spring Boot, I turn complex problems into elegant, scalable solutions.
           </p>
@@ -99,27 +95,32 @@ const Hero = () => {
             </button>
           </div>
 
+          {/* Typewriter effect */}
           <div className="hero-tech-typing">
             <span className="tech-label">Core Tech Stack:</span>
-            <div className="typing-carousel" style={{ height: '2rem', marginTop: '0.5rem', position: 'relative' }}>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={technologies[techIndex]}
-                  className="typing-item"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.6 }}
-                  style={{
-                    position: 'absolute',
-                    color: 'var(--accent)',
-                    fontWeight: 600,
-                    fontSize: '1.2rem'
-                  }}
-                >
-                  {technologies[techIndex]}
-                </motion.span>
-              </AnimatePresence>
+            <div style={{ marginTop: '0.5rem', minHeight: '2rem', display: 'flex', alignItems: 'center' }}>
+              <TypeAnimation
+                sequence={[
+                  'MERN Stack', 2000,
+                  'React.js', 2000,
+                  'Node.js', 2000,
+                  'Express.js', 2000,
+                  'MongoDB', 2000,
+                  'Spring Boot', 2000,
+                  'Python', 2000,
+                ]}
+                wrapper="span"
+                speed={50}
+                deletionSpeed={65}
+                repeat={Infinity}
+                style={{
+                  color: 'var(--accent)',
+                  fontWeight: 700,
+                  fontSize: '1.2rem',
+                  fontFamily: 'monospace',
+                }}
+              />
+              <span className="typewriter-cursor">|</span>
             </div>
           </div>
         </motion.div>
@@ -128,7 +129,7 @@ const Hero = () => {
           className="hero-orbit"
           initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+          transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
           style={{ position: 'relative', zIndex: 20 }}
         >
           <div className="hero-avatar">
@@ -138,7 +139,6 @@ const Hero = () => {
           <div className="orbit orbit-2" />
           <div className="orbit orbit-3" />
 
-          {/* Rotating container for tech badges */}
           <motion.div
             style={{
               position: 'absolute',
@@ -146,16 +146,15 @@ const Hero = () => {
               zIndex: 10,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}
             animate={{ rotate: 360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
           >
             {orbitTech.map((tech) => {
-              const radius = 162; // Matches orbit-3 radius
+              const radius = 162;
               const x = Math.cos(tech.angle * (Math.PI / 180)) * radius;
               const y = Math.sin(tech.angle * (Math.PI / 180)) * radius;
-
               return (
                 <motion.div
                   key={tech.name}
@@ -168,7 +167,7 @@ const Hero = () => {
                 >
                   <motion.div
                     animate={{ rotate: -360 }}
-                    transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                    transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
                     className="glass-card"
                     style={{
                       padding: '0.4rem 0.8rem',
