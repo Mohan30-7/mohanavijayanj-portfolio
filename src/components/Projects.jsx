@@ -31,6 +31,15 @@ const projects = [
     image: '/projects/mv-spark.png',
     category: 'Frontend',
   },
+  {
+    title: 'Maruthi Rituals',
+    description: 'A modern, spiritual-themed website for a Vedic priest featuring immersive 3-stage parallax scroll, English/Tamil bilingual localization, WhatsApp booking system, animated splash screen, and a premium maroon & gold UI design.',
+    tech: ['React', 'Framer Motion', 'Vite', 'CSS'],
+    github: 'https://github.com/Mohan30-7/maruthi-rituals',
+    demo: 'https://maruthi-rituals.vercel.app/',
+    image: '/projects/maruthi-rituals.png',
+    category: 'Frontend',
+  },
 ];
 
 const categories = ['All', 'Full Stack', 'Frontend', 'Data Analytics'];
