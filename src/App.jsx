@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 
 import Education from './components/Education';
 import Certifications from './components/Certifications';
+import Experience from './components/Experience';
 import GitHubStats from './components/GitHubStats';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -49,6 +50,8 @@ const App = () => {
         <Education />
         <div className="section-divider" />
         <Certifications />
+        <div className="section-divider" />
+        <Experience />
         <div className="section-divider" />
         <GitHubStats />
         <div className="section-divider" />
